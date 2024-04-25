@@ -65,8 +65,12 @@ function Chat({ socket, username, room }) {
             setCurrentMessage(event.target.value);
           }}
           onKeyPress={(event) => {
-            event.key === "Enter" && sendMessage();
+            if (event.key === "Enter") {
+              event.preventDefault(); // Prevents the default behavior of Enter key (submitting form)
+              sendMessage();
+            }
           }}
+          
         />
         <button onClick={sendMessage}>&#9658;</button>
       </div>
