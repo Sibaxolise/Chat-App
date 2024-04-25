@@ -1,5 +1,5 @@
 import "./App.css";
-import io from "socket.io-client";
+import io from "sockt.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
 
