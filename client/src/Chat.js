@@ -6,15 +6,12 @@ function Chat({ socket, username, room }) {
   const [messageList, setMessageList] = useState([]);
 
   const sendMessage = async () => {
-    if (currentMessage !== "") {
+    if (currentMessage.trim() !== "") {
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        time: getCurrentTime(),
       };
 
       await socket.emit("send_message", messageData);
@@ -23,10 +20,21 @@ function Chat({ socket, username, room }) {
     }
   };
 
+  const getCurrentTime = () => {
+    const date = new Date();
+    return `${date.getHours()}:${date.getMinutes()}`;
+  };
+
   useEffect(() => {
-    socket.on("receive_message", (data) => {
+    const handleMessage = (data) => {
       setMessageList((list) => [...list, data]);
-    });
+    };
+
+    socket.on("receive_message", handleMessage);
+
+    return () => {
+      socket.off("receive_message", handleMessage);
+    };
   }, [socket]);
 
   return (
@@ -36,24 +44,23 @@ function Chat({ socket, username, room }) {
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
-          {messageList.map((messageContent) => {
-            return (
-              <div
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
-                <div>
-                  <div className="message-content">
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
-                  </div>
+          {messageList.map((messageContent, index) => (
+            <div
+              className="message"
+              id={username === messageContent.author ? "you" : "other"}
+              key={index}
+            >
+              <div>
+                <div className="message-content">
+                  <p>{messageContent.message}</p>
+                </div>
+                <div className="message-meta">
+                  <p id="time">{messageContent.time}</p>
+                  <p id="author">{messageContent.author}</p>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </ScrollToBottom>
       </div>
       <div className="chat-footer">
