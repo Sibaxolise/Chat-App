@@ -69,7 +69,7 @@ body {
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px;
-  background: #263238;
+  background: grey;
   position: relative;
   cursor: pointer;
 }
@@ -83,7 +83,7 @@ body {
 
 .chat-window .chat-body {
   height: calc(450px - (45px + 70px));
-  border: 1px solid #263238;
+  border: 1px solid grey;
   background: #fff;
 
   position: relative;
@@ -141,7 +141,7 @@ body {
 
 #other .message-content {
   justify-content: flex-end;
-  background-color: cornflowerblue;
+  background-color: #ee87b7;
 }
 
 #other .message-meta {
