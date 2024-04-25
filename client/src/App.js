@@ -22,17 +22,17 @@ function App() {
     <div className="App">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3>Join A Chat</h3>
+          <h3>Tech Talk</h3>
           <input
             type="text"
-            placeholder="John..."
+            placeholder="Username..."
             onChange={(event) => {
               setUsername(event.target.value);
             }}
           />
           <input
             type="text"
-            placeholder="Room ID..."
+            placeholder="Username ID..."
             onChange={(event) => {
               setRoom(event.target.value);
             }}
