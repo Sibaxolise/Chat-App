@@ -1,11 +1,15 @@
 .App {
-  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background: #fff;
-  color: #212121;
-  font-family: "Open Sans", sans-serif;
-  display: grid;
-  place-items: center;
+  width: 100vw;
+  background:url(images/lydia.jpg);
+  background-size: 50rem; /* Adjust this property as needed */
+
+}
+.react-chatbot-kit-chat-container{
+  width: 400px;
 }
 body {
   margin: 0%;
@@ -17,6 +21,10 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  box-sizing: border-box;
+  border: 1px solid lightgrey; 
+  background-color: white;
+  /* Adding a 1px solid border with light grey color */
 }
 
 .joinChatContainer h3 {
@@ -27,7 +35,7 @@ body {
   width: 210px;
   height: 40px;
   margin: 7px;
-  border: 2px solid #43a047;
+  border: 2px solid grey;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -41,13 +49,13 @@ body {
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #43a047;
+  background: grey;
   color: #fff;
   cursor: pointer;
 }
 
 .joinChatContainer button:hover {
-  background: #2e7d32;
+  background: #FFC0CB;
 }
 
 .chat-window {
@@ -101,7 +109,7 @@ body {
   height: auto;
   min-height: 40px;
   max-width: 120px;
-  background-color: #43a047;
+  background-color: grey;
   border-radius: 5px;
   color: white;
   display: flex;
@@ -184,7 +192,7 @@ body {
 }
 
 .chat-window .chat-footer button:hover {
-  color: #43a047;
+  color: #FFC0CB;
 }
 .hide {
   opacity: 0 !important;
