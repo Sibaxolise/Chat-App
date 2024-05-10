@@ -25,14 +25,14 @@ function App() {
           <h3>Tech Talk</h3>
           <input
             type="text"
-            placeholder="Username..."
+            placeholder="Username..." required
             onChange={(event) => {
               setUsername(event.target.value);
             }}
           />
           <input
             type="text"
-            placeholder="Username ID..."
+            placeholder="Chat Room ID..." required
             onChange={(event) => {
               setRoom(event.target.value);
             }}
